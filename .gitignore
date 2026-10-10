@@ -1,0 +1,13 @@
+/config/settings.json
+/runtime/
+/.venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+*.png
+*.jpg
+*.zip
+*.pem
+*.key

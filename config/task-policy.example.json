@@ -1,0 +1,15 @@
+{
+  "note": "人工核对后在ALAS界面应用；本文件不自动覆盖账号配置",
+  "main_enabled": false,
+  "event_enabled": false,
+  "opsi_enabled_until_verified": false,
+  "oil_reserve": 1000,
+  "main_oil_limit": 1250,
+  "emotion": "calculate/prevent_green_face",
+  "tactical": {"slots": "已有槽位", "prefer": "T1", "add_new_student": true},
+  "buy_diamonds_oil_ap": false,
+  "commission_auto_recommend": false,
+  "retire_rare_ships": false,
+  "mail_send_enabled": false,
+  "mail_interval_hours": 2
+}

@@ -1,0 +1,19 @@
+{
+  "adb": "D:/LDPlayer/adb.exe",
+  "serial": "127.0.0.1:5555",
+  "alas_root": "D:/Alas/AzurLaneAutoScript",
+  "alas_python": "D:/Alas/AzurLaneAutoScript/toolkit/python.exe",
+  "profile": "alas",
+  "runtime_dir": "../runtime",
+  "run_hours": 10,
+  "max_starts": 3,
+  "poll_seconds": 60,
+  "image_seconds": 3600,
+  "vision_enabled": false,
+  "model": "SET_TO_A_VERIFIED_VISION_MODEL",
+  "api_base": "https://api.deepseek.com",
+  "api_key_env": "DEEPSEEK_API_KEY",
+  "request_timeout": 30,
+  "max_tokens": 800,
+  "prices_usd_per_million": null
+}

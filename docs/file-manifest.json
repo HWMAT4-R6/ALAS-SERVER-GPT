@@ -1,0 +1,86 @@
+[
+  {
+    "path": ".github/workflows/tests.yml",
+    "sha256": "7b57b809cebf97cc033c98d851fca40220df500207a9f70539434654b74b9a6c"
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "50eed4a36e8ccdfc1bc9bc9005638fe4d713ad98a6e29c69ef1cd57a829c2333"
+  },
+  {
+    "path": "README.md",
+    "sha256": "13d0016aa80b45701c9958da7ea71f69db9d1f273133a20777c93a1f32301779"
+  },
+  {
+    "path": "config/settings.example.json",
+    "sha256": "46177681a3490cdd9a76bf1426dfb91e975e0a2448c9c12aeec9175799223eed"
+  },
+  {
+    "path": "config/task-policy.example.json",
+    "sha256": "1e0a8d0e580b1a3855ffe6b76f5a6703b7ff39d9d17c00c48fcf0993f1bdd1d9"
+  },
+  {
+    "path": "docs/deployment.md",
+    "sha256": "809aeae4a010d648eb6ae1b1efe349dfc255e7dc53ade9f7084639e4a494b3c0"
+  },
+  {
+    "path": "docs/design.md",
+    "sha256": "634d7ebc31c838691ce0d7919b2070a8c866e327ae96d320f3df380fbcd67395"
+  },
+  {
+    "path": "docs/implementation-plan.md",
+    "sha256": "fbfc8881a3aba1bd605945e80328cbc843c3371f41081a989dac2025d8aa5160"
+  },
+  {
+    "path": "docs/migration.md",
+    "sha256": "7d1b5e805c0de4aa20521c870580b20e1aaeaf9fc160dbed78fded1804e69b12"
+  },
+  {
+    "path": "docs/reporting.md",
+    "sha256": "4fa9a5662a91711c42accacd0a581de2725b587f91c700399eea9e76e350081d"
+  },
+  {
+    "path": "docs/runbook.md",
+    "sha256": "c08d9a5a7208326a4f051c3042f18fef468b4f44c089700ee80646ab0de971f6"
+  },
+  {
+    "path": "docs/troubleshooting.md",
+    "sha256": "1f5b66d9a1cd26abdd7bf9c40fa42bdf24a01d9cc00b164133e65da43bd31dbe"
+  },
+  {
+    "path": "docs/validation.md",
+    "sha256": "a4f6e68fc4415cb0c3d01870510a694388e9543681816a4ad9c7c7bfce8df5d1"
+  },
+  {
+    "path": "requirements.txt",
+    "sha256": "ac9c3643a3b5bb62b04c1826e9ed6cb8058a1a686e11d6f97d9f90701b5d0bb1"
+  },
+  {
+    "path": "scripts/doctor.ps1",
+    "sha256": "34374e41b9cdef84508ee269cdf764506bf54374ce1b0f120459e642a33a065e"
+  },
+  {
+    "path": "scripts/start.ps1",
+    "sha256": "caf2651dd67262ffd7e71456a58661f33e797511e8e71a9d29942c1118666c30"
+  },
+  {
+    "path": "scripts/stop.ps1",
+    "sha256": "a8b4dc58de7e7d447ecd7f2acb69f6547f80853e114ff287bf39c1431b7b629b"
+  },
+  {
+    "path": "src/__init__.py",
+    "sha256": "f0358437a456c3b87b6e000741be3cd8dcd0050e12dcafb1be9b81b625caf633"
+  },
+  {
+    "path": "src/runtime.py",
+    "sha256": "06f016c1be8345656132c4bfd3d1c2274198c5cc408a89878b2e9f99c23fde8c"
+  },
+  {
+    "path": "src/workers.py",
+    "sha256": "e9ed74a105e36eee68920fb9f5c356acb9a2ceef899df7ebb4d324329af4fb31"
+  },
+  {
+    "path": "tests/test_runtime.py",
+    "sha256": "cb45375dcb38c46e04812f248a0cbe6eb67d94df2255329b0ccd7956b224ad4c"
+  }
+]
