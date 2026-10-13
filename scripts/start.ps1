@@ -1,4 +1,4 @@
-param([ValidateSet('supervisor','observer')][string]$Mode = 'supervisor', [switch]$HomeVerified)
+param([ValidateSet('supervisor','observer','reporter')][string]$Mode = 'supervisor', [switch]$HomeVerified)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 $taskPython = Join-Path $taskRoot '.venv/Scripts/python.exe'

@@ -159,6 +159,37 @@ def supervise(cfg):
             record(folder, event='supervisor_stopped')
 
 
+def relogin_alert(cfg, folder, filename):
+    """React to a login/relogin screen: pause everything and try to alert.
+
+    Called by the observer when the imager reports page=login (a phone login
+    kicks the server session). The PAUSE marker stops the supervisor, observer
+    and reporter loops. The alert mail is best-effort: a mail failure must
+    never crash the observer, and an existing PAUSE suppresses duplicate
+    alerts (the reporter still carries the event in its next slot).
+    """
+    if (folder / 'PAUSE').exists():
+        return False
+    (folder / 'PAUSE').touch()
+    record(folder, event='relogin_detected', filename=filename)
+    if not cfg.get('mail_send_enabled', False):
+        record(folder, event='relogin_alert_skipped', reason='mail_send_disabled')
+        return True
+    from .mailer import send
+    subject = '[碧蓝挂机] 检测到登录页/疑似顶号，已自动暂停'
+    body = ('观察器在截图中识别到登录/重新登录页面，已创建 PAUSE 暂停挂机。\n'
+            f'时间：{datetime.now().isoformat()}\n'
+            f'截图：{filename}\n'
+            '请确认账号状态（是否被手机端顶号），人工核验支持主页后再执行 resume。')
+    try:
+        facts = send(cfg, subject, body)
+    except Exception as error:
+        record(folder, event='relogin_alert_failed', error_type=type(error).__name__)
+    else:
+        record(folder, event='relogin_alert_sent', message_id=facts['message_id'])
+    return True
+
+
 def observe(cfg):
     folder = Path(cfg['runtime_dir'])
     interval = max(60, int(cfg.get('poll_seconds', 60)))
@@ -180,6 +211,8 @@ def observe(cfg):
                         workers.configure(cfg)
                         result = workers.run_worker('imager', image_path=str(out))
                         (folder / 'latest-observation.json').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
+                        if result['result'].get('page') == 'login':
+                            relogin_alert(cfg, folder, out.name)
                     last_hash = digest
             except Exception as error:
                 record(folder, event='observer_error', error_type=type(error).__name__)
@@ -191,10 +224,13 @@ def observe(cfg):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('command', choices=['doctor', 'capture', 'supervisor', 'observer', 'pause', 'resume'])
+    p.add_argument('command', choices=['doctor', 'capture', 'supervisor', 'observer',
+                                       'reporter', 'report', 'pause', 'resume'])
     p.add_argument('--config', default=str(PROJECT / 'config/settings.json'))
     p.add_argument('--out')
     p.add_argument('--home-verified', action='store_true')
+    p.add_argument('--dry-run', action='store_true')
+    p.add_argument('--force', action='store_true')
     args = p.parse_args()
     cfg = load(args.config)
     folder = Path(cfg['runtime_dir'])
@@ -213,6 +249,12 @@ def main():
         supervise(cfg)
     elif args.command == 'observer':
         observe(cfg)
+    elif args.command == 'reporter':
+        from . import reporter
+        reporter.loop(cfg)
+    elif args.command == 'report':
+        from . import reporter
+        print(reporter.run_once(cfg, dry_run=args.dry_run, force=args.force))
     elif args.command == 'capture':
         if not online(cfg):
             raise RuntimeError('ADB offline')

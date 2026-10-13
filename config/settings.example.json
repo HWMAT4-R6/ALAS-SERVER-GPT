@@ -15,5 +15,13 @@
   "api_key_env": "DEEPSEEK_API_KEY",
   "request_timeout": 30,
   "max_tokens": 800,
-  "prices_usd_per_million": null
+  "prices_usd_per_million": null,
+  "daily_cost_limit_usd": null,
+  "mail_send_enabled": false,
+  "mail_interval_hours": 2,
+  "mail_catchup_minutes": 30,
+  "mail_from": "SET_SENDER@qq.com",
+  "mail_to": "SET_RECIPIENT@qq.com",
+  "mail_auth_env": "QQ_SMTP_AUTH",
+  "mail_auth_file": null
 }
