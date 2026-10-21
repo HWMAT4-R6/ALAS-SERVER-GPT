@@ -5,11 +5,11 @@
   },
   {
     "path": ".gitignore",
-    "sha256": "50eed4a36e8ccdfc1bc9bc9005638fe4d713ad98a6e29c69ef1cd57a829c2333"
+    "sha256": "34b73877f34d1820ea709caffd30c7eaeeafb35e71cf309fe477e2e9e828b1c8"
   },
   {
     "path": "README.md",
-    "sha256": "13d0016aa80b45701c9958da7ea71f69db9d1f273133a20777c93a1f32301779"
+    "sha256": "c5ce333e1d84a41de2f759c00e27da37e10edcbb9fa073b2109ef323f8f88c4a"
   },
   {
     "path": "config/settings.example.json",
@@ -17,7 +17,11 @@
   },
   {
     "path": "config/task-policy.example.json",
-    "sha256": "1e0a8d0e580b1a3855ffe6b76f5a6703b7ff39d9d17c00c48fcf0993f1bdd1d9"
+    "sha256": "7ad6ed568562d4714b87fb7bced5962751ec2d700059fae8bd3d1f197393cf81"
+  },
+  {
+    "path": "docs/daily-growth-policy.md",
+    "sha256": "e1094c567b8d93f9f2c8754e01565d7a44e71dbcfec2ab074df98bab49118684"
   },
   {
     "path": "docs/deployment.md",
@@ -44,12 +48,20 @@
     "sha256": "c08d9a5a7208326a4f051c3042f18fef468b4f44c089700ee80646ab0de971f6"
   },
   {
+    "path": "docs/server-handoff-20261021.md",
+    "sha256": "822c3a4c80bd4e6598f2bf407d6e9132e58437d3cb4b02864e9f6cee9e4e9d04"
+  },
+  {
     "path": "docs/troubleshooting.md",
     "sha256": "1f5b66d9a1cd26abdd7bf9c40fa42bdf24a01d9cc00b164133e65da43bd31dbe"
   },
   {
     "path": "docs/validation.md",
-    "sha256": "a4f6e68fc4415cb0c3d01870510a694388e9543681816a4ad9c7c7bfce8df5d1"
+    "sha256": "e0b06a00a11073946f66114b7a88a2fbcf21ab544973370e9f95c44b605b89d3"
+  },
+  {
+    "path": "patches/local-alas-01c0a010.patch",
+    "sha256": "4c23fff468d8f19c34093b38de35c378d6c8ad5444124dbb63d00a2460746bff"
   },
   {
     "path": "requirements.txt",

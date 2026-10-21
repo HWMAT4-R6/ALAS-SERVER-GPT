@@ -84,3 +84,10 @@ Copy-Item config/settings.example.json config/settings.json
 ## 来源
 
 ALAS由 [LmeSzinc/AzurLaneAutoScript](https://github.com/LmeSzinc/AzurLaneAutoScript) 提供；此仓库不包含其源码和安装包。伴随脚本来自本项目部署实践的重整。软件版本、截图和客户端变化可能影响识别；升级前备份、单项回归。
+
+## 最新养成与服务器交接
+
+- [无大型活动期的主力养成、练级与资源积累](docs/daily-growth-policy.md)
+- [完整迁移范围、ALAS本机补丁、邮件与主管心跳交接](docs/server-handoff-20261021.md)
+
+代码同步不等于账号/Gmail授权、模拟器或Codex心跳已迁移。服务器验收前保持刷图默认关闭；公开仓库不保存账号配置、密钥、截图、日志或邮件证据。

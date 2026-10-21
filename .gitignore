@@ -11,3 +11,13 @@ __pycache__/
 *.zip
 *.pem
 *.key
+
+/config/*.local.json
+/config/*secret*
+/config/*credential*
+*.jsonl
+*.sqlite*
+*.db
+*.pfx
+*.p12
+*.token

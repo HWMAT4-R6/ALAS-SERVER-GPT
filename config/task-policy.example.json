@@ -1,15 +1,24 @@
 {
-  "note": "人工核对后在ALAS界面应用；本文件不自动覆盖账号配置",
+  "note": "迁移示例，现场核验后应用；默认不启动刷图，不携带账号配置",
   "main_enabled": false,
   "event_enabled": false,
   "opsi_enabled_until_verified": false,
   "oil_reserve": 1000,
   "main_oil_limit": 1250,
   "emotion": "calculate/prevent_green_face",
-  "tactical": {"slots": "已有槽位", "prefer": "T1", "add_new_student": true},
+  "tactical": {
+    "slots": "已有槽位",
+    "prefer": "T1",
+    "add_new_student": true
+  },
   "buy_diamonds_oil_ap": false,
   "commission_auto_recommend": false,
   "retire_rare_ships": false,
   "mail_send_enabled": false,
-  "mail_interval_hours": 2
+  "mail_interval_hours": 2,
+  "daily_focus": "commander_level_and_stable_ur_ssr_core_then_carry",
+  "main_batch_limit": 3,
+  "per_batch_oil_buffer": 20,
+  "research_use_cubes": false,
+  "research_coin_budget": "free_or_reviewed_budget"
 }

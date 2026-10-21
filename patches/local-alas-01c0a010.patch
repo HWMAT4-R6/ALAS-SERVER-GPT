@@ -1,0 +1,130 @@
+diff --git a/module/campaign/run.py b/module/campaign/run.py
+index 5703330..6af0c8b 100644
+--- a/module/campaign/run.py
++++ b/module/campaign/run.py
+@@ -360,7 +360,7 @@ class CampaignRun(CampaignEvent):
+         Pages:
+             in: page_campaign
+         """
+-        if self.campaign.commission_notice_show_at_campaign():
++        if self.config.is_task_enabled("Commission") and self.campaign.commission_notice_show_at_campaign():
+             logger.info('Commission notice found')
+             self.config.task_call('Commission', force_call=True)
+             self.config.task_stop('Commission notice found')
+diff --git a/module/config/argument/args.json b/module/config/argument/args.json
+index 0384691..bd84b17 100644
+--- a/module/config/argument/args.json
++++ b/module/config/argument/args.json
+@@ -6708,13 +6708,11 @@
+   "Commission": {
+     "Scheduler": {
+       "Enable": {
+-        "type": "lock",
+-        "value": true,
++        "type": "checkbox",
++        "value": false,
+         "option": [
+-          true
+-        ],
+-        "option_bold": [
+-          true
++          true,
++          false
+         ]
+       },
+       "NextRun": {
+@@ -6875,13 +6873,11 @@
+   "Research": {
+     "Scheduler": {
+       "Enable": {
+-        "type": "lock",
+-        "value": true,
++        "type": "checkbox",
++        "value": false,
+         "option": [
+-          true
+-        ],
+-        "option_bold": [
+-          true
++          true,
++          false
+         ]
+       },
+       "NextRun": {
+@@ -10057,4 +10053,4 @@
+       }
+     }
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/module/config/config.py b/module/config/config.py
+index 97631fc..a01be6a 100644
+--- a/module/config/config.py
++++ b/module/config/config.py
+@@ -295,7 +295,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
+                 if isinstance(next_run, datetime) and next_run > limit:
+                     deep_set(self.data, keys=f"{task}.Scheduler.NextRun", value=now)
+ 
+-        for task in ["Commission", "Research", "Reward"]:
++        for task in ["Reward"]:
+             if not self.is_task_enabled(task):
+                 self.modified[f"{task}.Scheduler.Enable"] = True
+         force_enable = list
+diff --git a/module/config/config_manual.py b/module/config/config_manual.py
+index 99ecd3e..ba3bea4 100644
+--- a/module/config/config_manual.py
++++ b/module/config/config_manual.py
+@@ -29,7 +29,7 @@ class ManualConfig:
+     > Daily > Hard > OpsiAshBeacon > OpsiAshAssist > OpsiMonthBoss
+     > Sos > EventSp > EventA > EventB > EventC > EventD
+     > RaidDaily > CoalitionSp > WarArchives > MaritimeEscort
+-    > Event > Event2 > Raid > Hospital > Coalition > Main > Main2 > Main3
++    > Main > Event > Event2 > Raid > Hospital > Coalition > Main2 > Main3
+     > OpsiMeowfficerFarming
+     > GemsFarming
+     > OpsiHazard1Leveling
+@@ -138,7 +138,7 @@ class ManualConfig:
+     # which means chapter AB are continuous
+     STAGE_INCREASE_AB = True
+     # Insert anything to STAGE_INCREASE
+-    STAGE_INCREASE_CUSTOM = ''
++    STAGE_INCREASE_CUSTOM = ['7-2 > 7-3 > 7-4 > 8-1 > 8-2 > 8-3 > 8-4']
+     MAP_HAS_CLEAR_PERCENTAGE = True
+     MAP_CLEAR_PERCENTAGE_SHORT = False
+     MAP_HAS_WALK_SPEEDUP = False
+diff --git a/module/device/connection_attr.py b/module/device/connection_attr.py
+index 4cb4706..25893ba 100644
+--- a/module/device/connection_attr.py
++++ b/module/device/connection_attr.py
+@@ -54,14 +54,6 @@ class ConnectionAttr:
+             for k, _ in deep_iter(d, depth=1):
+                 if 'proxy' in k[0].split('_')[-1].lower():
+                     del os.environ[k[0]]
+-        else:
+-            su = super(self.config.__class__, self.config)
+-            for k, v in deep_iter(su.__dict__, depth=1):
+-                if not isinstance(v, str):
+-                    continue
+-                if 'eri' in k[0].split('_')[-1]:
+-                    print(k, v)
+-                    su.__setattr__(k[0], chr(8) + v)
+         # Cache adb_client
+         _ = self.adb_client
+ 
+diff --git a/module/retire/enhancement.py b/module/retire/enhancement.py
+index 1024c6f..bda9513 100644
+--- a/module/retire/enhancement.py
++++ b/module/retire/enhancement.py
+@@ -61,9 +61,9 @@ class Enhancement(Dock):
+ 
+         if ship_type is not None:
+             ship_type = str(ship_type)
+-            self.dock_filter_set(extra='enhanceable', index=ship_type)
++            self.dock_filter_set(extra='enhanceable', index=ship_type, rarity='super_rare')
+         else:
+-            self.dock_filter_set(extra='enhanceable')
++            self.dock_filter_set(extra='enhanceable', rarity='super_rare')
+ 
+         if self.appear(DOCK_EMPTY, offset=(30, 30)):
+             return False
